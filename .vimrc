@@ -123,7 +123,7 @@ let g:DoxygenToolkit_returnTag="@Returns   "
 let g:DoxygenToolkit_blockHeader="--------------------------------------------------------------------------" 
 let g:DoxygenToolkit_blockFooter="----------------------------------------------------------------------------" 
 let g:DoxygenToolkit_authorName="Tim huang" 
-let g:DoxygenToolkit_licenseTag="tim for the company"
+let g:DoxygenToolkit_licenseTag="tim for "
 let g:DoxygenToolkit_commentType = "C++" 
 
 "mark
@@ -149,6 +149,17 @@ let g:indent_guides_enable_on_vim_startup = 1
 "remove ~M
 nmap mm :%s/\r//g<cr>
 
+"snipmate 's Trigger Completion
+"to enable auto-popup(url: http://www.vim.org/scripts/script.php?script_id=1879)
+"First need to add code to snipmate.vim
+" fun! GetSnipsInCurrentScope()
+"   let snips = {}
+"   for scope in [bufnr('%')] + split(&ft, '\.') + ['_']
+"     call extend(snips, get(s:snippets, scope, {}), 'keep')
+"     call extend(snips, get(s:multi_snips, scope, {}), 'keep')
+"   endfor
+"   return snips
+" endf 
 let g:acp_behaviorSnipmateLength =1 
 
 

@@ -1,4 +1,42 @@
-mkdir ~/.vim
-mkdir ~/.vim/bundle
-git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-vim -c BundleInstall
+#!/bin/bash
+echo "Begin to Install vim plugins"
+
+if [ ! -d ~/.vim ]; then 
+    mkdir ~/.vim
+    echo "Created dir ~/.vim"
+else
+    echo "Dir ~/.vim exist"
+fi
+
+if [ ! -d ~/.vim/bundle ]; then
+    mkdir ~/.vim/bundle
+    echo "Created dir ~/.vim/bundle"
+else
+    echo "Dir ~/.vim/bundle exist"
+fi
+
+if [ ! -d ~/.vim/bundle/vundle ]; then
+    git clone http://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+    echo "vundle is exist"
+else
+    echo "Get vundle to install"
+fi
+
+rc_file="/.vimrc"
+rc_dir=$PWD$rc_file
+if [ ! -f ~/.vimrc ]; then
+    ln $rc_dir ~/.vimrc
+    echo "Create soft link to .vimrc"
+else
+    read -p ".vimrc is exist,weather replase it Y/N(N):" 
+    if [ $REPLY == "Y" -o $REPLY == "y" ] ; then
+       rm ~/.vimrc -f
+       ln $rc_dir ~/.vimrc
+       echo "create soft link to .vimrc"
+    fi
+fi
+
+read -p "weather to install others plugins Y/N(N):"
+if [ $REPLY == "Y" -o $REPLY == "y" ]; then
+   vim -c BundleInstall
+fi
