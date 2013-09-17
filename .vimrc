@@ -56,7 +56,7 @@ Bundle 'cscope.vim'
 Bundle 'echofunc.vim' 
 Bundle 'grep.vim' 
 Bundle 'vim-scripts/indexer.tar.gz'
-Bundle 'minibufexplorerpp' 
+"Bundle 'minibufexplorerpp' 
 Bundle 'SuperTab'
 Bundle 'vimprj'
 Bundle 'DfrankUtil' 
@@ -162,4 +162,37 @@ nmap mm :%s/\r//g<cr>
 " endf 
 let g:acp_behaviorSnipmateLength =1 
 
+" save session for next operation
+" 
+
+"autocmd VimLeave * mks! $HOME/vimfiles/session/session.vim
+
+" auto open session file
+"autocmd VimEnter * :call s:ReadSession()
+"function s:ReadSession()
+"    let session_file = $HOME . "/vimfiles/session/session.vim"
+"    if filereadable( session_file )
+"        execute "so " . session_file
+"    endif
+"endfunction
+
+
+" auto sv and ld session
+let g:AutoSessionFile="project.vim"
+let g:OrigPWD=getcwd()
+if filereadable(g:AutoSessionFile)
+    if argc() == 0
+        au VimEnter * call EnterHandler()
+        au VimLeave * call LeaveHandler()
+    endif
+endif
+function! LeaveHandler()
+    exec "mks! ".g:OrigPWD."/".g:AutoSessionFile
+endfunction
+function! EnterHandler()
+    exe "source ".g:AutoSessionFile
+endfunction
+
+
+let NERDTreeIgnore = ['.*\.o$','.*\.ko$','.*\.gz$']
 
