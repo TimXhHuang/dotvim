@@ -28,7 +28,7 @@ if [ ! -f ~/.vimrc ]; then
     ln $rc_dir ~/.vimrc
     echo "Create soft link to .vimrc"
 else
-    read -p ".vimrc is exist,weather replase it Y/N(N):" 
+    read -p ".vimrc is exist,whether replace it Y/N(N):" 
     if [ $REPLY == "Y" -o $REPLY == "y" ] ; then
        rm ~/.vimrc -f
        ln $rc_dir ~/.vimrc
@@ -36,7 +36,7 @@ else
     fi
 fi
 
-read -p "weather to install others plugins Y/N(N):"
+read -p "whether to install others plugins Y/N(N):"
 if [ $REPLY == "Y" -o $REPLY == "y" ]; then
    vim -c BundleInstall
 fi

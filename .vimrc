@@ -68,6 +68,10 @@ Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'vim-scripts/Railscasts-Theme-GUIand256color'
 Bundle 'msanders/snipmate.vim'
 Bundle 'AutoComplPop'
+Bundle 'godlygeek/tabular'
+Bundle 'plasticboy/vim-markdown'
+Bundle 'jamshedVesuna/vim-markdown-preview'
+
 
 filetype plugin indent on     " required!
 
