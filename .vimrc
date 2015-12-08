@@ -46,7 +46,7 @@ endif
 
 " let Vundle manage Vundle
 " required! 
-Bundle 'gmarik/vundle'
+Bundle 'VundleVim/Vundle.vim'
 " vim-scripts repos
 Bundle 'L9'
 Bundle 'taglist.vim'
@@ -143,8 +143,6 @@ let g:indent_guides_guide_size=1
 if $COLORTERM == 'gnome-terminal'
     set term=gnome-256color
         colorscheme railscasts
-else
-    colorscheme default
 endif 
 
 "Use this option to control whether the plugin is enabled on Vim startup.
