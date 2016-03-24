@@ -49,12 +49,13 @@ endif
 Bundle 'VundleVim/Vundle.vim'
 " vim-scripts repos
 Bundle 'L9'
-Bundle 'taglist.vim'
+Bundle 'majutsushi/tagbar'
 Bundle 'The-NERD-tree'
 Bundle 'The-NERD-Commenter'
 Bundle 'cscope.vim'
 Bundle 'echofunc.vim' 
 Bundle 'grep.vim' 
+Bundle 'vim-scripts/a.vim'
 Bundle 'vim-scripts/indexer.tar.gz'
 "Bundle 'minibufexplorerpp' 
 Bundle 'SuperTab'
@@ -67,7 +68,7 @@ Bundle 'tomtom/checksyntax_vim'
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'vim-scripts/Railscasts-Theme-GUIand256color'
 Bundle 'msanders/snipmate.vim'
-Bundle 'AutoComplPop'
+Bundle 'exvim/ex-autocomplpop'
 Bundle 'godlygeek/tabular'
 Bundle 'plasticboy/vim-markdown'
 Bundle 'jamshedVesuna/vim-markdown-preview'
@@ -81,18 +82,10 @@ set mouse=a
   
 set nu 
 
-"Taglist
-let Tlist_Exit_OnlyWindow=1
-let Tlist_Show_Menu=0 
-let Tlist_Auto_Highlight_Tag = 1
-let Tlist_Auto_Open =1
-let Tlist_Use_Right_Window =1 
-let Tlist_Show_One_File = 1
-let g:NERDTreeChDirMode=1
-let g:NERDTreeWinPos = "left"
-let g:NERDTreeWinSize = 25
-let g:Tlist_Show_One_File = 1
-
+"tagbar
+nmap <silent> <F4> :TagbarToggle<CR>
+let g:tagbar_ctags_bin = 'ctags'
+let g:tagbar_width = 30
 
 "c.vim
 
