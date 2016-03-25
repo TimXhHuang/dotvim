@@ -160,16 +160,16 @@ let g:acp_behaviorSnipmateLength =1
 " save session for next operation
 " 
 
-"autocmd VimLeave * mks! $HOME/vimfiles/session/session.vim
+autocmd VimLeave * mks! $HOME/vimfiles/session/session.vim
 
 " auto open session file
-"autocmd VimEnter * :call s:ReadSession()
-"function s:ReadSession()
-"    let session_file = $HOME . "/vimfiles/session/session.vim"
-"    if filereadable( session_file )
-"        execute "so " . session_file
-"    endif
-"endfunction
+autocmd VimEnter * :call s:ReadSession()
+function s:ReadSession()
+    let session_file = $HOME . "/vimfiles/session/session.vim"
+    if filereadable( session_file )
+        execute "so " . session_file
+    endif
+endfunction
 
 
 " auto sv and ld session
