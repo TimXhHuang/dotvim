@@ -36,7 +36,7 @@ filetype off                   " required!
 
  " Usual quickstart instructions
 if	s:MSWIN
-    set rtp+=$VIM/vimfiles/bundle/vundle/
+    set rtp+=$VIM/vimfiles/bundle/vundle.vim
     call vundle#rc('$VIM/vimfiles/bundle/')
    set guifont=Courier_New:h11:cANSI
 elseif s:UNIX 
@@ -55,6 +55,7 @@ Bundle 'The-NERD-Commenter'
 Bundle 'cscope.vim'
 Bundle 'echofunc.vim' 
 Bundle 'grep.vim' 
+Bundle 'snipMate'
 Bundle 'vim-scripts/a.vim'
 Bundle 'vim-scripts/indexer.tar.gz'
 "Bundle 'minibufexplorerpp' 
@@ -67,8 +68,7 @@ Bundle 'vim-scripts/Mark--Karkat'
 Bundle 'tomtom/checksyntax_vim'
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'vim-scripts/Railscasts-Theme-GUIand256color'
-Bundle 'msanders/snipmate.vim'
-Bundle 'exvim/ex-autocomplpop'
+Bundle 'autocomplpop'
 Bundle 'godlygeek/tabular'
 Bundle 'plasticboy/vim-markdown'
 Bundle 'jamshedVesuna/vim-markdown-preview'
@@ -76,14 +76,14 @@ Bundle 'jamshedVesuna/vim-markdown-preview'
 
 filetype plugin indent on     " required!
 
-
-
 set mouse=a  
   
 set nu 
 
 "tagbar
 nmap <silent> <F4> :TagbarToggle<CR>
+nmap <silent> <F2> :wq!<CR>
+
 let g:tagbar_ctags_bin = 'ctags'
 let g:tagbar_width = 30
 
