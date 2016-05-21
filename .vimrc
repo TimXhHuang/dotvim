@@ -50,34 +50,24 @@ Bundle 'VundleVim/Vundle.vim'
 " vim-scripts repos
 Bundle 'L9'
 Bundle 'majutsushi/tagbar'
-Bundle 'The-NERD-tree'
-Bundle 'The-NERD-Commenter'
-Bundle 'cscope.vim'
-Bundle 'echofunc.vim' 
 Bundle 'grep.vim' 
-Bundle 'snipMate'
 Bundle 'vim-scripts/a.vim'
 Bundle 'vim-scripts/indexer.tar.gz'
-"Bundle 'minibufexplorerpp' 
 Bundle 'SuperTab'
 Bundle 'vimprj'
+" Needed yb vimprj and indexer
 Bundle 'DfrankUtil' 
-Bundle 'OmniCppComplete' 
 Bundle 'DoxygenToolkit.vim'
-Bundle 'vim-scripts/Mark--Karkat'
 Bundle 'tomtom/checksyntax_vim'
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'vim-scripts/Railscasts-Theme-GUIand256color'
-Bundle 'autocomplpop'
-Bundle 'godlygeek/tabular'
 Bundle 'plasticboy/vim-markdown'
 Bundle 'jamshedVesuna/vim-markdown-preview'
+Bundle 'Valloric/YouCompleteMe'
 
-
+" Generate vim settings
 filetype plugin indent on     " required!
-
 set mouse=a  
-  
 set nu 
 
 "tagbar
@@ -87,24 +77,6 @@ nmap <silent> <F2> :wq!<CR>
 let g:tagbar_ctags_bin = 'ctags'
 let g:tagbar_width = 30
 
-"c.vim
-
-filetype plugin on
-
-filetype plugin indent on
-set completeopt=longest,menu
-
-set wildmenu
-
-"MiniBufExplorer
-let g:miniBufExplMapWindowNavVim = 1 
-let g:miniBufExplMapWindowNavArrows = 1 
-let g:miniBufExplMapCTabSwitchBufs = 1 
-let g:miniBufExplModSelTarget = 1
-
-
-
-let g:SuperTabRetainCompletionType=2
 
 "set backup
 set nobackup 
@@ -144,50 +116,43 @@ let g:indent_guides_enable_on_vim_startup = 1
 "remove ~M
 nmap mm :%s/\r//g<cr>
 
-"snipmate 's Trigger Completion
-"to enable auto-popup(url: http://www.vim.org/scripts/script.php?script_id=1879)
-"First need to add code to snipmate.vim
-" fun! GetSnipsInCurrentScope()
-"   let snips = {}
-"   for scope in [bufnr('%')] + split(&ft, '\.') + ['_']
-"     call extend(snips, get(s:snippets, scope, {}), 'keep')
-"     call extend(snips, get(s:multi_snips, scope, {}), 'keep')
-"   endfor
-"   return snips
-" endf 
-let g:acp_behaviorSnipmateLength =1 
 
-" save session for next operation
-" 
-
-autocmd VimLeave * mks! $HOME/vimfiles/session/session.vim
-
-" auto open session file
-autocmd VimEnter * :call s:ReadSession()
-function s:ReadSession()
-    let session_file = $HOME . "/vimfiles/session/session.vim"
-    if filereadable( session_file )
-        execute "so " . session_file
-    endif
+"==========================================================================
+"Begin setup Vexplore
+" Toggle Vexplore with Ctrl-E
+function! ToggleVExplorer()
+  if exists("t:expl_buf_num")
+      let expl_win_num = bufwinnr(t:expl_buf_num)
+      if expl_win_num != -1
+          let cur_win_nr = winnr()
+          exec expl_win_num . 'wincmd w'
+          close
+          exec cur_win_nr . 'wincmd w'
+          unlet t:expl_buf_num
+      else
+          unlet t:expl_buf_num
+      endif
+  else
+      exec '1wincmd w'
+      Vexplore
+      let t:expl_buf_num = bufnr("%")
+  endif
 endfunction
+map <silent> <C-E> :call ToggleVExplorer()<CR>
+" Hit enter in the file browser to open the selected
+" file with :vsplit to the right of the browser.
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+
+" Change directory to the current buffer when opening files.
+set autochdir
+"End setup Vexplore
+" ==========================================================================
 
 
-" auto sv and ld session
-let g:AutoSessionFile="project.vim"
-let g:OrigPWD=getcwd()
-if filereadable(g:AutoSessionFile)
-    if argc() == 0
-        au VimEnter * call EnterHandler()
-        au VimLeave * call LeaveHandler()
-    endif
-endif
-function! LeaveHandler()
-    exec "mks! ".g:OrigPWD."/".g:AutoSessionFile
-endfunction
-function! EnterHandler()
-    exe "source ".g:AutoSessionFile
-endfunction
 
 
-let NERDTreeIgnore = ['.*\.o$','.*\.ko$','.*\.gz$']
+
+
+
 

@@ -1,6 +1,7 @@
 #!/bin/bash
 echo "Begin to Install vim plugins"
 
+
 if [ ! -d ~/.vim ]; then 
     mkdir ~/.vim
     echo "Created dir ~/.vim"
@@ -25,13 +26,13 @@ fi
 rc_file="/.vimrc"
 rc_dir=$PWD$rc_file
 if [ ! -f ~/.vimrc ]; then
-    ln $rc_dir ~/.vimrc
+    ln -s $rc_dir ~/.vimrc
     echo "Create soft link to .vimrc"
 else
     read -p ".vimrc is exist,whether replace it Y/N(N):" 
     if [ $REPLY == "Y" -o $REPLY == "y" ] ; then
        rm ~/.vimrc -f
-       ln $rc_dir ~/.vimrc
+       ln -s $rc_dir ~/.vimrc
        echo "create soft link to .vimrc"
     fi
 fi
@@ -40,3 +41,5 @@ read -p "whether to install others plugins Y/N(N):"
 if [ $REPLY == "Y" -o $REPLY == "y" ]; then
    vim -c BundleInstall
 fi
+
+
