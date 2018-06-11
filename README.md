@@ -3,7 +3,7 @@ This project is my vim configuration files.
 ## How to setup
 1. Install vim with script language support
 
-    `sudo apt-get install vim-nox`
+    `sudo apt-get install ctags vim-nox`
     
 2. Install vim plugins and configuration file
 

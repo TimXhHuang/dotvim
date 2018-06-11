@@ -4,7 +4,7 @@ set fileencodings=utf-8,gb2312,gbk,gb18030
 
 set termencoding=utf-8
 
-set encoding=prc
+set encoding=utf-8
 
 let s:MSWIN = has("win16") || has("win32")   || has("win64")    || has("win95")
 
