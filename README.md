@@ -1,6 +1,6 @@
-#vim configuration files
+# vim configuration files
 This project is my vim configuration files.
-##How to setup
+## How to setup
 1. Install vim with script language support
 
     `sudo apt-get install vim-nox`
@@ -20,6 +20,6 @@ This project is my vim configuration files.
     `python3 ./install.py --clang-completer`
 
      
-##License
+## License
 Using it without any limit
 
